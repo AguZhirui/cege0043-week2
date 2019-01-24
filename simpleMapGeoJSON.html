@@ -44,6 +44,11 @@ var geojsonFeature = {
 "coordinates": [-0.134188, 51.524392]
 }
 };
+// create the custom Marker icon 
+var testMarkerPink = L.AwesomeMarkers.icon({
+icon: 'play',
+markerColor: 'pink'
+});
 // and add it to the map
 L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
 </script>
