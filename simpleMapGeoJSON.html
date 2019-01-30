@@ -44,10 +44,23 @@ var geojsonFeature = {
 "coordinates": [-0.134188, 51.524392]
 }
 };
+// and add it to the map
+L.geoJSON(geojsonFeature).addTo(mymap).bindPopup("<b>"+geojsonFeature.properties.name+""+geojsonFeature.properties.popupContent+"<b>");
+// create a custom popup
+var popup = L.popup();
+// create an event detector to wait for the user's click event and then use the popup to show them where they clicked
+// note that you don't need to do any complicated maths to convert screen coordinates to real world coordiantes - the Leaflet API does this for you
+function onMapClick(e) {
+popup
+.setLatLng(e.latlng)
+.setContent("You clicked the map at " + e.latlng.toString())
+.openOn(mymap);
+}
+
 // create the custom Marker icon 
 var testMarkerPink = L.AwesomeMarkers.icon({
-icon: 'play',
-markerColor: 'pink'
+	icon: 'play',
+	markerColor: 'pink'
 });
 // and add it to the map_modified
 L.geoJSON(geojsonFeature, {
