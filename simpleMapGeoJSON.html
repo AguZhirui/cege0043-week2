@@ -56,11 +56,13 @@ popup
 .setContent("You clicked the map at " + e.latlng.toString())
 .openOn(mymap);
 }
+// now add the click event detector to the map
+mymap.on('click', onMapClick);
 
 // create the custom Marker icon 
 var testMarkerPink = L.AwesomeMarkers.icon({
-	icon: 'play',
-	markerColor: 'pink'
+icon: 'play',
+markerColor: 'pink'
 });
 // and add it to the map_modified
 L.geoJSON(geojsonFeature, {
